@@ -9,7 +9,7 @@ import SampleWorkflow from "./workflows/sample_workflow.ts";
  */
 export default Manifest({
   name: "gmmr",
-  description: "メンションされると関連するユーザーのタスクを良い感じに表示してくれる君です。Slack次世代プラットフォームの習作として",
+  description: "メンションされると関連するユーザーのタスクを良い感じに表示してくれる君",
   icon: "assets/icon.png",
   workflows: [SampleWorkflow, ReplySimpleTextWorkflow],
   outgoingDomains: [],
