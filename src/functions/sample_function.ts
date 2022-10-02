@@ -10,7 +10,7 @@ export const SampleFunctionDefinition = DefineFunction({
   callback_id: "sample_function",
   title: "Sample function",
   description: "A sample function",
-  source_file: "functions/sample_function.ts",
+  source_file: "src/functions/sample_function.ts",
   input_parameters: {
     properties: {
       message: {

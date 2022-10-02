@@ -1,6 +1,6 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import ReplySimpleTextWorkflow from "./workflows/reply_simple_text_workflow.ts";
-import SampleWorkflow from "./workflows/sample_workflow.ts";
+import ReplySimpleTextWorkflow from "./src/workflows/reply_simple_text_workflow.ts";
+import SampleWorkflow from "./src/workflows/sample_workflow.ts";
 
 /**
  * The app manifest contains the app's configuration. This
