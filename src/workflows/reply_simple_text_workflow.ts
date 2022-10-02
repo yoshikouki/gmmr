@@ -1,4 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
+import { SendMessageFunctionDefinition } from "../functions/send_message_function.ts";
 
 /**
  * A Workflow is a set of steps that are executed in order.
@@ -26,9 +27,9 @@ const ReplySimpleTextWorkflow = DefineWorkflow({
 });
 
 ReplySimpleTextWorkflow.addStep(
-  Schema.slack.functions.SendMessage,
+  SendMessageFunctionDefinition,
   {
-    channel_id: ReplySimpleTextWorkflow.inputs.channelId,
+    channelId: ReplySimpleTextWorkflow.inputs.channelId,
     message:
       `Hello, ${ReplySimpleTextWorkflow.inputs.userId}! Shall we dance?\n\n\> ${ReplySimpleTextWorkflow.inputs.mentionText}`,
   },
