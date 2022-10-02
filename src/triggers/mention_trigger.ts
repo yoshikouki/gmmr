@@ -16,13 +16,13 @@ const MentionTrigger: Trigger<typeof ReplySimpleTextWorkflow.definition> = {
   description: "A trigger when the application is mentioned",
   workflow: "#/workflows/reply_simple_text_workflow",
   inputs: {
-    channel_id: {
+    channelId: {
       value: "{{data.channel_id}}",
     },
-    user_id: {
+    userId: {
       value: "{{data.user_id}}",
     },
-    mention_text: {
+    mentionText: {
       value: "{{data.text}}",
     },
   },
