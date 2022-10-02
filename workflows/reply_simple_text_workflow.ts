@@ -14,6 +14,12 @@ const ReplySimpleTextWorkflow = DefineWorkflow({
       channel_id: {
         type: Schema.slack.types.channel_id,
       },
+      user_id: {
+        type: Schema.slack.types.user_id,
+      },
+      mention_text: {
+        type: Schema.slack.types.rich_text,
+      },
     },
     required: [],
   },
@@ -23,7 +29,8 @@ ReplySimpleTextWorkflow.addStep(
   Schema.slack.functions.SendMessage,
   {
     channel_id: ReplySimpleTextWorkflow.inputs.channel_id,
-    message: "Great! Shall we dance?",
+    message:
+      `Hello, ${ReplySimpleTextWorkflow.inputs.user_id}! Shall we dance?\n\n\> ${ReplySimpleTextWorkflow.inputs.mention_text}`,
   },
 );
 

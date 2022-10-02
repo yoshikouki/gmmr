@@ -19,6 +19,12 @@ const MentionTrigger: Trigger<typeof ReplySimpleTextWorkflow.definition> = {
     channel_id: {
       value: "{{data.channel_id}}",
     },
+    user_id: {
+      value: "{{data.user_id}}",
+    },
+    mention_text: {
+      value: "{{data.text}}",
+    },
   },
 };
 
