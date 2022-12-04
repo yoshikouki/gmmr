@@ -36,7 +36,7 @@ export default SlackFunction(
   ({ inputs }) => {
     const { userId, mentionText } = inputs;
     const convertedMessage =
-      `Hello, ${userId}! Converted!\n\n\> ${mentionText}`;
+      `Hello, <@${userId}>! Converted!!1\n\n\> ${JSON.stringify(mentionText)}`;
     return { outputs: { convertedMessage } };
   },
 );
