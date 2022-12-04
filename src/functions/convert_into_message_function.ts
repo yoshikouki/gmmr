@@ -33,10 +33,32 @@ export const ConvertIntoMessageFunctionDefinition = DefineFunction({
 
 export default SlackFunction(
   ConvertIntoMessageFunctionDefinition,
-  ({ inputs }) => {
+  async ({ inputs }) => {
     const { userId, mentionText } = inputs;
-    const convertedMessage =
-      `Hello, <@${userId}>! Converted!!1\n\n\> ${JSON.stringify(mentionText)}`;
+    const response = await fetchOpenAiCompletion(mentionText);
+    const convertedMessage = [
+      `<@${userId}>`,
+      `${response}`,
+    ].join("\n");
     return { outputs: { convertedMessage } };
   },
 );
+
+const fetchOpenAiCompletion = async (text: string) => {
+  const openAiApiKey = "open-api-key"
+  const response = await fetch("https://api.openai.com/v1/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${openAiApiKey}`,
+    },
+    body: JSON.stringify({
+      prompt: text,
+      model: "text-davinci-003",
+      temperature: 0.9,
+      max_tokens: 2048,
+    }),
+  });
+  const json = await response.json();
+  return json.choices[0].text.trim()
+};
